@@ -7,10 +7,18 @@ namespace MoodAnalyser
     public class AnalyseMood
     {
         string mood = "";
-        
-        public string analysemood(string inputmessage)
+        public AnalyseMood(string inputMessage)
         {
-            mood = inputmessage;
+            this.mood = inputMessage;
+        }
+
+        public AnalyseMood()
+        {
+            this.mood = "";
+        }
+        public string analysemood()
+        {
+
             if (this.mood.ToLower().Contains("happy") || this.mood.ToLower().Contains("any"))
             {
                 this.mood = "Happy";
@@ -27,4 +35,3 @@ namespace MoodAnalyser
         }
     }
 }
-
