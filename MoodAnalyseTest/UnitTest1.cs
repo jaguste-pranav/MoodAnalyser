@@ -26,5 +26,15 @@ namespace MoodAnalyseTest
             Assert.AreEqual(moodOutput, "Sad");
         }
 
+         [TestMethod]
+        public void TestMethod2()
+        {
+            string inputMood = "I am in oikmjnhbgvf Mood";
+            AnalyseMood mood = new AnalyseMood(inputMood);
+            string moodOutput = mood.analysemood();
+
+            Assert.AreEqual(moodOutput, "Sad");
+        }
+
     }
 }

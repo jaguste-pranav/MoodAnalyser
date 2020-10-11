@@ -29,7 +29,14 @@ namespace MoodAnalyser
             }
             else
             {
-                this.mood = "Invalid";
+                try
+                {
+                    throw new Exception();
+                }
+                catch (Exception c)
+                {
+                    this.mood = "Happy";
+                }
             }
             return this.mood;
         }
