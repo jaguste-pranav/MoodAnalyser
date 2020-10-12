@@ -18,25 +18,26 @@ namespace MoodAnalyser
         }
         public string analysemood()
         {
-
-            if (this.mood.ToLower().Contains("happy") || this.mood.ToLower().Contains("any"))
+            try
             {
-                this.mood = "Happy";
-            }
-            else if (this.mood.ToLower().Contains("sad"))
-            {
-                this.mood = "Sad";
-            }
-            else
-            {
-                try
+                if (this.mood == "")
                 {
-                    throw new Exception();
+                    throw new ExceptionMessage(ExceptionMessage.TypeOfException.EMPTY_MESSAGE, "Mood cannot be EMPTY");
                 }
-                catch (Exception c)
+
+                if (this.mood.ToLower().Contains("happy") || this.mood.ToLower().Contains("any"))
                 {
                     this.mood = "Happy";
                 }
+
+                else if (this.mood.ToLower().Contains("sad"))
+                {
+                    this.mood = "Sad";
+                }
+            }
+            catch(NullReferenceException)
+            {
+                throw new ExceptionMessage(ExceptionMessage.TypeOfException.EMPTY_MESSAGE, "Mood cannot be NULL");
             }
             return this.mood;
         }
