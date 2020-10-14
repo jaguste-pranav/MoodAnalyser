@@ -6,40 +6,35 @@ namespace MoodAnalyser
 {
     public class AnalyseMood
     {
-        string mood = "";
-        public AnalyseMood(string inputMessage)
+        private string message;
+        public AnalyseMood(string message)
         {
-            this.mood = inputMessage;
+            this.message = message;
         }
-
         public AnalyseMood()
         {
-            this.mood = "";
         }
         public string analysemood()
         {
             try
-            {
-                if (this.mood == "")
+            {   
+                if (this.message.Equals(string.Empty))
                 {
-                    throw new ExceptionMessage(ExceptionMessage.TypeOfException.EMPTY_MESSAGE, "Mood cannot be EMPTY");
+                    throw new ExceptionMessage(ExceptionMessage.ExceptionType.EMPTY_MESSAGE, "Mood cannot be empty");
                 }
-
-                if (this.mood.ToLower().Contains("happy") || this.mood.ToLower().Contains("any"))
+                if (this.message.ToLower().Contains("sad"))
                 {
-                    this.mood = "Happy";
+                    return "Sad";
                 }
-
-                else if (this.mood.ToLower().Contains("sad"))
+                else
                 {
-                    this.mood = "Sad";
+                    return "Happy";
                 }
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
-                throw new ExceptionMessage(ExceptionMessage.TypeOfException.EMPTY_MESSAGE, "Mood cannot be NULL");
+                throw new ExceptionMessage(ExceptionMessage.ExceptionType.NULL_MESSAGE, "Mood cannot be null");
             }
-            return this.mood;
         }
     }
 }
