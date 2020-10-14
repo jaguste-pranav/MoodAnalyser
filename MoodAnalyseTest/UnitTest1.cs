@@ -67,19 +67,20 @@ namespace MoodAnalyseTest
         }
 
         [TestMethod]
-        public void MoodAnalyserClassName_Should_Return_MoodAnalyserObject()
+        public void Given_Class_Return_AnalyseMoodObject_DefaultConstructor()
         {
             object expected = new AnalyseMood();
-            object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.AnalyseMood", "AnalyseMood");
+            object obj = MoodAnalyserFactor.CreateMoodAnalyserDefaultConstructor("MoodAnalyser.AnalyseMood", "AnalyseMood");
             Assert.AreEqual(expected.GetType(), obj.GetType());
         }
+
         [TestMethod]
-        public void ImproperClassName_Should_Throw_MoodAnalysisException()
+        public void Given_Wrong_Class_Throw_Exception_DefaultConstructor()
         {
             try
             {
                 object expected = new AnalyseMood();
-                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.AnalyseMood", "AnalyseMood");
+                object obj = MoodAnalyserFactor.CreateMoodAnalyserDefaultConstructor("MoodAnalyser.AnalyseMood", "AnalyseMood");
             }
             catch (ExceptionMessage e)
             {
@@ -87,12 +88,41 @@ namespace MoodAnalyseTest
             }
         }
         [TestMethod]
-        public void ImproperConstructorName_Should_Throw_MoodAnalysisException()
+        public void Given_Wrong_Constructor_Throw_Exception_DefaultConstructor()
         {
             try
             {
                 object expected = new AnalyseMood();
-                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.AnalyseMood", "AnalyseMood");
+                object obj = MoodAnalyserFactor.CreateMoodAnalyserDefaultConstructor("MoodAnalyser.AnalyseMood", "AnalyseMood");
+            }
+            catch (ExceptionMessage e)
+            {
+                Assert.AreEqual("No constructor found", e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Given_Wrong_Class_Throw_Exception_ParameterizedConstructor()
+        {
+            string message = "Sad";
+            try
+            {
+                object expected = new AnalyseMood("Sad");
+                object obj = MoodAnalyserFactor.CreateMoodAnalyserParameterisedConstructor("MoodAnalyser.AnalyseMood", "AnalyseMood", message);
+            }
+            catch (ExceptionMessage e)
+            {
+                Assert.AreEqual("No class found", e.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_Wrong_Constructor_Throw_Exception_ParameterizedConstructor()
+        {
+            string message = "Sad";
+            try
+            {
+                object expected = new AnalyseMood("Sad");
+                object obj = MoodAnalyserFactor.CreateMoodAnalyserParameterisedConstructor("MoodAnalyser.AnalyseMood", "AnalyseMood", message);
             }
             catch (ExceptionMessage e)
             {
