@@ -47,7 +47,7 @@ namespace MoodAnalyseTest
             }
             catch (ExceptionMessage e)
             {
-                Assert.AreEqual("Mood cannot be EMPTY", e.Message);
+                Assert.AreEqual("Mood cannot be empty", e.Message);
             }
         }
 
@@ -62,7 +62,41 @@ namespace MoodAnalyseTest
             }
             catch (ExceptionMessage e)
             {
-                Assert.AreEqual("Mood cannot be NULL", e.Message);
+                Assert.AreEqual("Mood cannot be null", e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void MoodAnalyserClassName_Should_Return_MoodAnalyserObject()
+        {
+            object expected = new AnalyseMood();
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.AnalyseMood", "AnalyseMood");
+            Assert.AreEqual(expected.GetType(), obj.GetType());
+        }
+        [TestMethod]
+        public void ImproperClassName_Should_Throw_MoodAnalysisException()
+        {
+            try
+            {
+                object expected = new AnalyseMood();
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.AnalyseMood", "AnalyseMood");
+            }
+            catch (ExceptionMessage e)
+            {
+                Assert.AreEqual("No class found", e.Message);
+            }
+        }
+        [TestMethod]
+        public void ImproperConstructorName_Should_Throw_MoodAnalysisException()
+        {
+            try
+            {
+                object expected = new AnalyseMood();
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser.AnalyseMood", "AnalyseMood");
+            }
+            catch (ExceptionMessage e)
+            {
+                Assert.AreEqual("No constructor found", e.Message);
             }
         }
     }
