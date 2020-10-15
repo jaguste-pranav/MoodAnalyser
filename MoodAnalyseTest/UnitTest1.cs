@@ -154,9 +154,9 @@ namespace MoodAnalyseTest
         [TestMethod]
         public void Given_Message_SetField_Check_Output()
         {
-            string expected = "Happy";
-            string result = MoodAnalyserFactor.SetField("Happy", "message");
-            Assert.AreEqual(expected, result);
+            string inputMood = "Happy";
+            string outputMood = MoodAnalyserFactor.SetField("Happy", "message");
+            Assert.AreEqual(inputMood, outputMood);
         }
 
         [TestMethod]
@@ -165,7 +165,7 @@ namespace MoodAnalyseTest
             try
             {
                 string message = string.Empty;
-                string result = MoodAnalyserFactor.SetField(message, "message");
+                string outputMood = MoodAnalyserFactor.SetField(message, "message");
             }
             catch (ExceptionMessage e)
             {
@@ -179,7 +179,7 @@ namespace MoodAnalyseTest
             try
             {
                 string message = string.Empty;
-                string result = MoodAnalyserFactor.SetField(message, "message");
+                string outputMood = MoodAnalyserFactor.SetField(message, "message");
             }
             catch (ExceptionMessage e)
             {
