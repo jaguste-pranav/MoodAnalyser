@@ -16,6 +16,7 @@ namespace MoodAnalyser
         }
         public string analysemood()
         {
+            string mood;
             try
             {   
                 if (this.message.Equals(string.Empty))
@@ -24,17 +25,19 @@ namespace MoodAnalyser
                 }
                 if (this.message.ToLower().Contains("sad"))
                 {
-                    return "Sad";
+                    mood = "Sad";
                 }
                 else
                 {
-                    return "Happy";
+                    mood = "Happy";
                 }
             }
             catch (NullReferenceException)
             {
                 throw new ExceptionMessage(ExceptionMessage.ExceptionType.NULL_MESSAGE, "Mood cannot be null");
             }
+
+            return mood;
         }
     }
 }
