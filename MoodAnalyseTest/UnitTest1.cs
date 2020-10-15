@@ -150,5 +150,41 @@ namespace MoodAnalyseTest
                 Assert.AreEqual("No method found", e.Message);
             }
         }
+
+        [TestMethod]
+        public void Given_Message_SetField_Check_Output()
+        {
+            string expected = "Happy";
+            string result = MoodAnalyserFactor.SetField("Happy", "message");
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Given_Empty_Message_SetField_Throw_Custom_Exception()
+        {
+            try
+            {
+                string message = string.Empty;
+                string result = MoodAnalyserFactor.SetField(message, "message");
+            }
+            catch (ExceptionMessage e)
+            {
+                Assert.AreEqual("Mood cannot be NULL", e.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Given_Null_Message_SetField_Throw_Custom_Exception()
+        {
+            try
+            {
+                string message = string.Empty;
+                string result = MoodAnalyserFactor.SetField(message, "message");
+            }
+            catch (ExceptionMessage e)
+            {
+                Assert.AreEqual("Mood cannot be NULL", e.Message);
+            }
+        }
     }
 }
