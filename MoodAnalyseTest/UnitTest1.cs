@@ -84,7 +84,7 @@ namespace MoodAnalyseTest
             }
             catch (ExceptionMessage e)
             {
-                Assert.AreEqual("No class found1", e.Message);
+                Assert.AreEqual("No class found", e.Message);
             }
         }
         [TestMethod]
@@ -97,7 +97,7 @@ namespace MoodAnalyseTest
             }
             catch (ExceptionMessage e)
             {
-                Assert.AreEqual("No constructor found1", e.Message);
+                Assert.AreEqual("No constructor found", e.Message);
             }
         }
 
@@ -143,7 +143,7 @@ namespace MoodAnalyseTest
         {
             try
             {
-                string outputMood = MoodAnalyserFactor.InvokeAnalyseMood("Happy", "Analyse");
+                string outputMood = MoodAnalyserFactor.InvokeAnalyseMood("Happy", "abc");
             }
             catch (ExceptionMessage e)
             {
@@ -169,7 +169,7 @@ namespace MoodAnalyseTest
             }
             catch (ExceptionMessage e)
             {
-                Assert.AreEqual("Mood cannot be NULL", e.Message);
+                Assert.AreEqual("Mood cannot be empty", e.Message);
             }
         }
 
@@ -178,7 +178,7 @@ namespace MoodAnalyseTest
         {
             try
             {
-                string message = string.Empty;
+                string message = null;
                 string outputMood = MoodAnalyserFactor.SetField(message, "message");
             }
             catch (ExceptionMessage e)

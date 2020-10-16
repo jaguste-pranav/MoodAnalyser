@@ -78,7 +78,7 @@ namespace MoodAnalyser
                 FieldInfo fieldInfo = moodAnalyserType.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
                 if (message.Equals(""))
                 {
-                    throw new ExceptionMessage(ExceptionMessage.ExceptionType.NO_SUCH_FIELD, "Mood cannot be NULL");
+                    throw new ExceptionMessage(ExceptionMessage.ExceptionType.NO_SUCH_FIELD, "Mood cannot be empty");
                 }
                 fieldInfo.SetValue(moodAnalyser, message);
                 return fieldInfo.GetValue(moodAnalyser).ToString();
@@ -86,7 +86,7 @@ namespace MoodAnalyser
             }
             catch (NullReferenceException)
             {
-                throw new ExceptionMessage(ExceptionMessage.ExceptionType.NO_SUCH_FIELD, "Field not found");
+                throw new ExceptionMessage(ExceptionMessage.ExceptionType.NO_SUCH_FIELD, "Mood cannot be NULL");
             }
         }
 
